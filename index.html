@@ -4,46 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        a {
-            transition: .3s;
-        }
-        .active {
-            color: red;
-            font-size: 3em;
-            transition: .3s;
-        }
-    </style>
 </head>
 <body>
-    <div>
-        <a href="#" class="active">link 1</a>
-        <a href="#">link 2</a>
-        <a href="#">link 3</a>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        // $(function(){
-        //     $('a').click(function(){
-        //         // let x = $(this).text();
-        //         // $('a').removeClass('active');
-        //         // $(this).addClass('active');
+    <div id="app">
 
-        //         $(this).toggleClass('active');
-        //     })
-        // })
-        let a = document.querySelectorAll('a');
-        for( data of a){
-            // console.log(data.classList)
-            data.onclick = function(e){
-                console.log(e.target.classList);
-                for(d of a){
-                    console.log(d);
-                    d.classList.remove('active');
+        <h1>{{title}}</h1>
+
+        <h2 v-if="onsale">$999</h2>
+        <h2 v-else>$1500</h2>
+
+        <div v-if="num > 10">熱賣中</div>
+        <div v-else-if="num > 0 && num < 10">低庫存</div>
+        <div v-else>補貨中</div>
+
+        <div>
+            {{items}}
+        </div>
+        
+        <div v-for="(item,idx) in items">{{item}} -- {{idx}}</div>
+        <div v-for="(data,idx) of items">{{idx}}--{{data}} </div>
+
+        <ul>
+            <li v-for="(todo,idx) in todos">
+                {{todo.id}} : {{todo.title}} -- 索引:{{idx}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    title:'hello Vue',
+                    onsale:true,
+                    num:16,
+                    items:[
+                        'apple',
+                        'banana',
+                        'cat',
+                        'dog',
+                        'elephant'
+                    ],
+                    todos:[
+                        {
+                            id:1,
+                            title:'吃飯'
+                        },{
+                            id:2,
+                            title:'睡覺'
+                        },{
+                            id:3,
+                            title:'打咚咚'
+                        },{
+                            id:4,
+                            title:'test'
+                        }
+                    ]
                 }
-                e.target.classList.add('active');
-            }
-        }
+            },
+        })
+        app.mount('#app');
+
     </script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="input">
+        <h2>{{input}}</h2>
+        
+        <input type="checkbox" v-model="skills"value="平面設計">平面設計
+        <input type="checkbox" v-model="skills"value="網頁設計">網頁設計
+        <input type="checkbox" v-model="skills"value="影視剪輯">影視剪輯
+        <div v-for="skill in skills">{{skill}}</div>
+
+        <a :href="link">yahoo</a>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    input:'asdf123',
+                    link: 'https://tw.yahoo.com',
+                    skills:[]
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
