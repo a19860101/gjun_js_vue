@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            transition: .3s;
+        }
+        .active {
+            color: red;
+            font-size: 3em;
+            transition: .3s;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="#" class="active">link 1</a>
+        <a href="#">link 2</a>
+        <a href="#">link 3</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // $(function(){
+        //     $('a').click(function(){
+        //         // let x = $(this).text();
+        //         // $('a').removeClass('active');
+        //         // $(this).addClass('active');
+
+        //         $(this).toggleClass('active');
+        //     })
+        // })
+        let a = document.querySelectorAll('a');
+        for( data of a){
+            // console.log(data.classList)
+            data.onclick = function(e){
+                console.log(e.target.classList);
+                for(d of a){
+                    console.log(d);
+                    d.classList.remove('active');
+                }
+                e.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
