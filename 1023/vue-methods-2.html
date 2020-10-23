@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="input"><button @click="add()">add</button>
+        <input type="text" v-model="input" @keyup.enter="add()" @keyup.esc="clear()"><button @click="add()" >add</button>
         <ul>
             <li v-for="(item,idx) in items" @click="del(idx)">{{item}}</li>
         </ul>
@@ -29,6 +29,9 @@
                 del(idx){
                     console.log(idx);
                     this.items.splice(idx,1);
+                },
+                clear(){
+                    this.input = '';
                 }
             }
         }).mount('#app')
