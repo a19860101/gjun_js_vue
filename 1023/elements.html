@@ -54,14 +54,17 @@
         for(data of items.children){
             console.log(data);
         }
-        
+        //父元素
         console.log($('#items').parent());
         console.log($('#items').parents());
         console.log($('#items').parents('.container'));
+        //同輩
         console.log($('#items').siblings());
         console.log($('#items').siblings('#title'));
         console.log($('#items').next());
         console.log($('#items').prev());
+
+        //子代
         console.log($('#items').find('li'));
         console.log($('.container').children());
         console.log($('.container').children('#items'));
