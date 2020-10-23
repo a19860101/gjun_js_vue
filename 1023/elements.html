@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">title</h1>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non natus in aut similique sapiente modi quaerat numquam eveniet dolorum qui facere unde voluptatem repudiandae perspiciatis omnis debitis, ipsam dolor. Sint?
+        </p>
+        <ul id="items">
+            <li class="item1"><a href="#">item1</a></li>
+            <li class="item2"><a href="#">item2</a></li>
+            <li class="item3"><a href="#">item3</a></li>
+            <li class="item4"><a href="#">item4</a></li>
+            <li class="item5"><a href="#">item5</a></li>
+        </ul>
+        <!-- 我是註解 -->
+        <a href="#">more</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let items = document.getElementById('items');
+        //父元素
+        // console.log(items.parentElement);
+        //父節點
+        // console.log(items.parentNode);
+
+        //下一個同輩元素
+        // console.log(items.nextElementSibling);
+        //上一個同輩元素
+        // console.log(items.previousElementSibling);
+
+        //下一個同輩節點 （換行、註解）
+        // console.log(items.nextSibling);
+        //上一個同輩節點 （換行、註解）
+        // console.log(items.previousSibling);
+        //子節點
+        // console.log(items.childNodes);
+        //子元素
+        // console.log(items.children);
+
+        //Nodelist 可以使用foreach迴圈
+        items.childNodes.forEach(function(data){
+            console.log(data)
+        })
+        //HtmlCollections不可使用
+        // items.children.forEach(function(data){
+        //     console.log(data);
+        // })
+        for(data of items.children){
+            console.log(data);
+        }
+        
+        console.log($('#items').parent());
+        console.log($('#items').parents());
+        console.log($('#items').parents('.container'));
+        console.log($('#items').siblings());
+        console.log($('#items').siblings('#title'));
+        console.log($('#items').next());
+        console.log($('#items').prev());
+        console.log($('#items').find('li'));
+        console.log($('.container').children());
+        console.log($('.container').children('#items'));
+
+        $('li').eq(4).find('a').click(function(){
+            // $('#title').hide();
+            // $(this).parents('#items').siblings('h1').hide();
+            $(this).parents('.container').find('h1').hide();
+        })
+        //https://api.jquery.com/category/traversing/
+    </script>
+</body>
+</html>
