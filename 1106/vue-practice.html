@@ -22,8 +22,14 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{title}}</h1>
+        <h1>{{title}} -- {{colorName}}</h1>
         <img :src="img" :alt="title">
+        <div>數量{{qty}}</div>
+        <div>
+            <div v-if="qty > 10">熱賣中</div>
+            <div v-else-if="qty <= 10 && qty > 0">低庫存</div>
+            <div v-else>補貨中</div>
+        </div>
         <ul>
             <li v-for="info in infos">{{info}}</li>
         </ul>
@@ -91,8 +97,20 @@
                 }
             },
             computed:{
+                currentIndex(){
+                    return this.products[this.selectedIndex];
+                },
                 img(){
-                    return this.products[this.selectedIndex].img
+                    return this.currentIndex.img
+                },
+                qty(){
+                    return this.currentIndex.qty
+                },
+                colorName(){
+                    return this.currentIndex.colorName;
+                },
+                id(){
+                    return this.currentIndex.id;
                 }
             }
         }).mount('#app');
