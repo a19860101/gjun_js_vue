@@ -6,10 +6,16 @@
     <title>Document</title>
     <script src="https://unpkg.com/vue@next"></script>
     <style>
-
+        ul.colors {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(4 ,50px );
+            grid-auto-rows: 50px;
+            gap: 10px;
+        }
         .color-box {
-            width: 50px;
-            height: 50px;
+            /* width: 50px; */
+            /* height: 50px; */
             border: 1px solid #000;
         }
     </style>
@@ -21,11 +27,11 @@
         <ul>
             <li v-for="info in infos">{{info}}</li>
         </ul>
-        <ul>
-            <li v-for="product in products" 
+        <ul class="colors">
+            <li v-for="(product,idx) in products" 
                 class='color-box' 
                 :style={backgroundColor:product.color}
-                @click="changeImg(product.img)">
+                @click="changeIndex(idx)">
             </li>
         </ul>
     </div>
@@ -34,48 +40,61 @@
             data(){
                 return {
                     title:'毛絨連帽外套-男',
-                    img:'./images/5001601_500.jpg',
+                    // img:'./images/5001601_500.jpg',
                     infos:[
                         '產地：中國',
                         '主布 : 棉60%、聚酯纖維40%',
                         '配布 : 聚酯纖維100%',
                         '羅紋 : 棉87%、聚酯纖維13%'
                     ],
+                    selectedIndex: 0,
                     products:[
                         {
                             id:1,
                             color:'#bf2d48',
                             colorName:'暗紅',
-                            img:'./images/5001601_500.jpg'
+                            img:'./images/5001601_500.jpg',
+                            qty: 3
                         },
                         {
                             id:2,
                             color:'green',
                             colorName:'深綠',
-                            img:'./images/5001602_500.jpg'
+                            img:'./images/5001602_500.jpg',
+                            qty: 12,
                         },
                         {
                             id:3,
                             color:'navy',
                             colorName:'深藍',
-                            img:'./images/5001603_500.jpg'
+                            img:'./images/5001603_500.jpg',
+                            qty:0
                         },
                         {
                             id:4,
                             color:'gray',
                             colorName:'深灰',
-                            img:'./images/5001604_500.jpg'
+                            img:'./images/5001604_500.jpg',
+                            qty:6
                         },
                     ]
                 }
             },
             methods:{
-                changeImg(value){
-                    this.img = value;
-                    // console.log(value)
+                // changeImg(value){
+                //     this.img = value;
+                //     // console.log(value)
+                // }
+                changeIndex(idx){
+                    this.selectedIndex = idx;
+                    // console.log(idx)
                 }
             },
-            computed:{}
+            computed:{
+                img(){
+                    return this.products[this.selectedIndex].img
+                }
+            }
         }).mount('#app');
     </script>
 </body>
