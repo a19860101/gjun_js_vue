@@ -22,7 +22,10 @@
             <li v-for="info in infos">{{info}}</li>
         </ul>
         <ul>
-            <li v-for="product in products" class='color-box' :style={backgroundColor:product.color}>
+            <li v-for="product in products" 
+                class='color-box' 
+                :style={backgroundColor:product.color}
+                @click="changeImg(product.img)">
             </li>
         </ul>
     </div>
@@ -41,7 +44,7 @@
                     products:[
                         {
                             id:1,
-                            color:'red',
+                            color:'#bf2d48',
                             colorName:'暗紅',
                             img:'./images/5001601_500.jpg'
                         },
@@ -66,7 +69,12 @@
                     ]
                 }
             },
-            methods:{},
+            methods:{
+                changeImg(value){
+                    this.img = value;
+                    // console.log(value)
+                }
+            },
             computed:{}
         }).mount('#app');
     </script>
