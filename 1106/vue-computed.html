@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <button @click="add()">+</button>
+        <h1>{{test}}</h1>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    num:0
+                }
+            },
+            methods:{
+                add(){
+                    this.num += 1;
+                }
+            },
+            computed:{
+                test(){
+                    if(this.num > 5){
+                        return 'hello test';
+                    }
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
