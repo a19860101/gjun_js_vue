@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -12,6 +20,10 @@
         <img :src="img" :alt="title">
         <ul>
             <li v-for="info in infos">{{info}}</li>
+        </ul>
+        <ul>
+            <li v-for="product in products" class='color-box' :style={backgroundColor:product.color}>
+            </li>
         </ul>
     </div>
     <script>
@@ -25,6 +37,32 @@
                         '主布 : 棉60%、聚酯纖維40%',
                         '配布 : 聚酯纖維100%',
                         '羅紋 : 棉87%、聚酯纖維13%'
+                    ],
+                    products:[
+                        {
+                            id:1,
+                            color:'red',
+                            colorName:'暗紅',
+                            img:'./images/5001601_500.jpg'
+                        },
+                        {
+                            id:2,
+                            color:'green',
+                            colorName:'深綠',
+                            img:'./images/5001602_500.jpg'
+                        },
+                        {
+                            id:3,
+                            color:'navy',
+                            colorName:'深藍',
+                            img:'./images/5001603_500.jpg'
+                        },
+                        {
+                            id:4,
+                            color:'gray',
+                            colorName:'深灰',
+                            img:'./images/5001604_500.jpg'
+                        },
                     ]
                 }
             },
