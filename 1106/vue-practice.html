@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <img :src="img" :alt="title">
+        <ul>
+            <li v-for="info in infos">{{info}}</li>
+        </ul>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    title:'毛絨連帽外套-男',
+                    img:'./images/5001601_500.jpg',
+                    infos:[
+                        '產地：中國',
+                        '主布 : 棉60%、聚酯纖維40%',
+                        '配布 : 聚酯纖維100%',
+                        '羅紋 : 棉87%、聚酯纖維13%'
+                    ]
+                }
+            },
+            methods:{},
+            computed:{}
+        }).mount('#app');
+    </script>
+</body>
+</html>

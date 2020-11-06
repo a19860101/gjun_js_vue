@@ -1,0 +1,34 @@
+<div id="app">
+    <button @click="number++">+</button>
+    <button @click="number--">-</button>
+    <button @click="number2++">+</button>
+    <br>
+    {{number}} | {{number2}}
+    <br>
+    {{test()}} | {{result}}
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return{
+
+                title:'Hello Vue!!',
+                number: 11,
+                number2:0
+            }
+        },
+        methods:{
+            test(){
+                console.log('methods');
+                return this.number > 10 ? '大於10':'小魚10';
+            }
+        },
+        computed:{
+            result(){
+                console.log('computed')
+                return this.number > 10 ? '大於10':'小魚10';
+            }
+        }
+    }).mount('#app');
+</script>
