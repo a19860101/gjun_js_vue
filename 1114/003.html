@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            color: #fa0;
+        }
+    </style>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <my-title></my-title>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+
+        });
+        app.component('my-title',{
+            data(){
+                return {
+                    name: 'Mary'
+                }
+            },
+            template:`<h1>HELLO {{name}}</h1>`
+        })
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
