@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            color: #fa0;
+        }
+    </style>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <my-title title="John"></my-title>
+        <my-title :title="name"></my-title>
+        <my-nav nav_name="關於我"></my-nav>
+        <my-nav :nav_name="link"></my-nav>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    name: 'Michelles',
+                    link: '產品介紹'
+                }
+            },
+        });
+        app.component('my-title',{
+            props:['title'],
+            template:`<h1>HELLO {{title}}</h1>`
+        })
+        app.component('my-nav',{
+            props:['nav_name'],
+            template:`<a href="#">{{nav_name}}</a>`
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
