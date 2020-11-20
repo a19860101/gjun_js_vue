@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <my-btn @add="add()"></my-btn>
+        <h3>{{num}}</h3>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    num:0
+                }
+            },
+            methods:{
+                add(){
+                    this.num++;
+                }
+            }
+        });
+        app.component('my-btn',{
+            template:`
+                <button @click="add()">CLICK</button>                
+            `,
+            methods:{
+                add(){
+                    this.$emit('add');
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

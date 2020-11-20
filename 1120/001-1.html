@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <button @click="add()">CLICK</button>
+        <h3>{{num}}</h3>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    num:0
+                }
+            },
+            methods:{
+                add(){
+                    this.num++
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
