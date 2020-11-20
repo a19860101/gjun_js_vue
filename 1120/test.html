@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            /* height: 200px; */
+            background-color: #fa0;
+        }
+        .content {
+            height: 100px;
+            overflow: hidden;
+        }
+        .content.active {
+            height: auto;
+            overflow: initial;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero soluta quisquam ipsam nihil laborum accusantium quis voluptatibus molestiae. Modi qui nostrum asperiores minus voluptatem incidunt nemo vero? Rem, delectus consectetur.
+        </div>
+        <a href="#">展開</a>
+    </div>
+    <script>
+        $(function(){
+            $('a').click(function(){
+                $(this).prev().toggleClass('active')
+                if($(this).text('展開')){
+                    $(this).text('收合')
+                }else{
+                    $(this).text('展開')
+                }
+                
+            })
+        })
+    </script>
+</body>
+</html>
