@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        #app {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <app-img v-for="img in imgs" :test="img"></app-img>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    imgs:[
+                        {
+                            id:1,
+                            img:'https://picsum.photos/id/46/400',
+                            author:'qqq'
+                        },
+                        {
+                            id:2,
+                            img:'https://picsum.photos/id/47/400',
+                            author:'zac'
+                        },
+                        {
+                            id:3,
+                            img:'https://picsum.photos/id/48/400',
+                            author:'john'
+                        },
+                    ]
+                }
+            }
+        })
+        app.component('app-img',{
+            template:`
+            <div class="box">
+                <img :src="test.img">
+                <div>{{test.author}}</div>
+            </div>
+            `,
+            props:['test']
+        })
+        app.mount('#app')
+
+    </script>
+</body>
+</html>
