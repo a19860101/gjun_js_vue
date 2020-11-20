@@ -6,39 +6,65 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
+        .container {
+            display: flex;
+        }
         .box {
             width: 200px;
-            /* height: 200px; */
             background-color: #fa0;
+            padding: 15px;
         }
         .content {
             height: 100px;
             overflow: hidden;
+            transition: .3s;
         }
         .content.active {
             height: auto;
             overflow: initial;
+            transition: .3s;
+        }
+
+        .test {
+            width: 200px;
+            height: 200px;
+            background-color: #0af;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <div class="content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero soluta quisquam ipsam nihil laborum accusantium quis voluptatibus molestiae. Modi qui nostrum asperiores minus voluptatem incidunt nemo vero? Rem, delectus consectetur.
+    <!-- <div class="test">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At autem aspernatur quos enim? Quia totam, excepturi ipsa repellendus in quibusdam dolore, hic praesentium a laboriosam est perferendis consequuntur. Expedita rem quo ratione, ipsam repudiandae sequi maxime nobis provident recusandae dignissimos assumenda suscipit quaerat perferendis quam cumque eaque debitis autem vel! Accusantium vel architecto sint magni maiores! Molestiae, corporis. Ducimus ex optio totam voluptatibus hic labore asperiores expedita, at minus, odit est sed, praesentium reprehenderit ullam. Minima voluptatum quam quae recusandae! Illo iusto optio non veritatis aliquid iure quaerat, possimus blanditiis! Ipsa hic beatae, quos distinctio vel fuga corporis corrupti aut?
+    </div> -->
+    <div class="container">
+        <div class="box">
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero soluta quisquam ipsam nihil laborum accusantium quis voluptatibus molestiae. Modi qui nostrum asperiores minus voluptatem incidunt nemo vero? Rem, delectus consectetur.
+            </div>
+            <a href="#" class="collapse">展開</a>
         </div>
-        <a href="#">展開</a>
     </div>
     <script>
         $(function(){
-            $('a').click(function(){
+            $('.collapse').click(function(){
                 $(this).prev().toggleClass('active')
-                if($(this).text('展開')){
+                // let sh = $(this).prev()[0].scrollHeight;
+                // let h = $(this).prev().height();
+                // console.log(h);
+
+                if($(this).text() === '展開'){
                     $(this).text('收合')
+                    // $(this).prev().height(sh)
                 }else{
                     $(this).text('展開')
+                    // $(this).prev().height(100)
                 }
                 
             })
+            // console.log($('.test'))
+            // console.log($('.test')[0].scrollHeight)
+            // console.log($('.test').prop(scrollHeight))
         })
     </script>
 </body>
