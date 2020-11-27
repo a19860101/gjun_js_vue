@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        {{weathers}}
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    weathers:[]
+                }
+            },
+            created(){
+                let url = 'https://api.openweathermap.org/data/2.5/weather';
+                axios.get(url,{
+                    params:{
+                        q:'Tokyo',
+                        appid:'b1ecbccd638b763d489602917ba47cc3',
+                        units: 'metric'
+                    }
+                })
+                .then(w => {
+                    console.log(w.data);
+                    this.weathers = w.data;
+                })
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
