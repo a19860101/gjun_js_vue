@@ -9,27 +9,29 @@
 </head>
 <body>
     <div id="app">
-        {{weathers}}
+        <div v-for="user in users">
+            <img :src="user.picture.large" alt="">
+            {{user.name.title}}{{user.name.first}}{{user.name.last}}
+
+        </div>
     </div>
     <script>
         const app = Vue.createApp({
             data(){
                 return{
-                    weathers:[]
+                    users:[]
                 }
             },
             created(){
-                let url = 'https://api.openweathermap.org/data/2.5/weather';
+                let url = 'https://randomuser.me/api/';
                 axios.get(url,{
                     params:{
-                        q:'Tokyo',
-                        appid:'b1ecbccd638b763d489602917ba47cc3',
-                        units: 'metric'
+                        results:100
                     }
                 })
-                .then(w => {
-                    console.log(w.data);
-                    this.weathers = w.data;
+                .then(data => {
+                    console.log(data.data.results);
+                    this.users = data.data.results;
                 })
             }
         })
