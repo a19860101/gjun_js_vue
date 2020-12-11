@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        {{p}}
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    photos:[]
+                }
+            },
+            computed:{
+                p(){
+                    this.photos.forEach(function({id,author,width}){
+                        // console.log(id,author,width);
+                        return id;
+                    })
+                }
+              
+            },
+            created(){
+                fetch('https://picsum.photos/v2/list')
+                .then(res => res.json())
+                .then(data => {
+                    this.photos = data;
+                })
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js" type="module"></script>
+</head>
+<body>
+
+
+
+
+    <h1>解構賦值</h1>
+    <h2>陣列解構</h2>
+    <h2>物件解構</h2>
+
+    <script>
+        const names = ['John','Mary','Jack','Ben','Marcus'];
+        console.log(names[0]);
+        const [,,,,n5] = names;
+        console.log(n5);
+
+        const users = {
+            name: 'John',
+            mail: 'asdf@gmail.com',
+            skills: ['test','test2']
+        }
+
+        // console.log(users.mail);
+        const {name,mail} = users;
+        console.log(mail);
+        console.log(name);
+    </script>
+</body>
+</html>
