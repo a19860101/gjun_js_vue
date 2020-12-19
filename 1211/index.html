@@ -8,15 +8,16 @@
 </head>
 <body>
 
-
-
-
     <h1>解構賦值</h1>
     <h2>陣列解構</h2>
     <h2>物件解構</h2>
 
     <script>
         const names = ['John','Mary','Jack','Ben','Marcus'];
+        const new_names = names.slice(0,2);
+        // 0,10  10,20 20,30
+        // 0,6 6,12 12,18 ,18,24
+        console.log(new_names);
         console.log(names[0]);
         const [,,,,n5] = names;
         console.log(n5);

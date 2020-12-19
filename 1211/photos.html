@@ -8,30 +8,32 @@
 </head>
 <body>
     <div id="app">
-        {{p}}
+        <pre>{{stops}}</pre>
     </div>
     <script>
         Vue.createApp({
             data(){
                 return {
-                    photos:[]
+                    stops:[]
                 }
             },
-            computed:{
-                p(){
-                    this.photos.forEach(function({id,author,width}){
-                        // console.log(id,author,width);
-                        return id;
-                    })
-                }
-              
-            },
+
             created(){
-                fetch('https://picsum.photos/v2/list')
+                fetch('https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz')
                 .then(res => res.json())
                 .then(data => {
-                    this.photos = data;
+                    const stops = Object.keys(data.retVal).map(key=>data.resVal[key]);
+                    const stops = Object.keys(data.retVal).map(key => data.retVal[key]);
+                    // this.stops = stops;
+
+
                 })
+                // fetch('https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz')
+                //     .then(res => res.json())
+                //     .then(json => {
+                //     const stops = Object.keys(json.retVal).map(key => json.retVal[key]);
+                //     this.stops = stops;
+                // });
             }
         }).mount('#app')
     </script>
