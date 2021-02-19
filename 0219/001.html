@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}/ {{ num }}</h1>
+    </div>
+    <script>
+        Vue.createApp({
+            setup(){
+                let { ref } = Vue;
+                // let title = 'hello VUE';
+                const title = Vue.ref('hello vue');
+                const title = ref('hello vue');
+                const num = ref(100)
+                
+                setTimeout(function(){
+                    title.value = 'hello vuevuevue!!'; 
+                    num.value += 120;
+                    console.log(title.value);
+                },3000)
+
+                return {
+                    title,
+                    num
+                }
+            }
+        }).mount('#app');
+
+        // Vue.createApp({
+        //     data(){
+        //         return {
+        //             title: 'hello vue'
+        //         }
+        //     },
+        // }).mount('#app')
+
+    </script>
+</body>
+</html>

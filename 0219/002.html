@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}} {{user[1]}}</h1>
+    </div>
+    <script>
+        Vue.createApp({
+            setup(){
+                const {ref,reactive} = Vue;
+                const user = reactive(['123','hello']);
+                const title = ref('hello title');
+                // const user = Vue.reactive({
+                //     name:'John',
+                //     mail:'asdf@gmail.com'
+                // });
+                // console.log(user.name);
+                return {
+                    user,
+                    title
+                }
+            }
+        }).mount('#app');
+
+        // Vue.createApp({
+        //     data(){
+        //         return {
+        //             title: 'hello vue'
+        //         }
+        //     },
+        // }).mount('#app')
+
+    </script>
+</body>
+</html>
