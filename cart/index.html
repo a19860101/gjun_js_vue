@@ -51,14 +51,13 @@
         </div>
         <div class="carts">
             <h1>購物車</h1>
-            <div v-for="(item,idx) in cartItems" class="d-flex justify-content-between">
+            <div v-for="(item,idx) in cartItems" class="d-flex justify-content-between my-2" >
                 <div>{{item.title}}</div>
                 <div>
                     {{item.price}}
 
                     <button @click="removeItem(idx)" class="btn btn-sm btn-danger">移除</button>
                 </div>
-                
             </div>
             <div>總金額:{{sum}}</div>
             <button @click="clearCart()" class="btn btn-warning">清空購物車</button>
