@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //map
+        let products = [
+                        {
+                            id:1,
+                            title: 'iPhone 12',
+                            price: '12',
+                        },
+                        {
+                            id:2,
+                            title: 'iPhone 12 Mini',
+                            price: '12',
+                        },
+                        {
+                            id:3,
+                            title: 'iPhone 12 Pro',
+                            price: '1',
+                        },
+                        {
+                            id:4,
+                            title: 'iPhone 12 Pro Max',
+                            price: '2',
+                        },
+                    ];
+        // console.log(products);
+        // let priceArray = [];
+        // for(prod of products){
+        //     console.log(prod);
+        //     priceArray.push(prod.price);
+        // }
+        // console.log(priceArray);
+        // let priceArray = products.map(function(prod){
+        //     // console.log(prod);
+        //     // console.log(prod.price)
+        //     return prod.price;
+        // })
+        // let priceArray = products.map( (prod) => {return prod.price});
+        let priceArray = products.map( prod =>  prod.price );
+        console.log(priceArray);
+        // let total = priceArray.reduce(function(a,b){
+        //     return parseInt(a)+parseInt(b);
+        // });
+        let total = priceArray.reduce((a,b)=>parseInt(a)+parseInt(b));
+        console.log(total);
+    </script>
+</body>
+</html>

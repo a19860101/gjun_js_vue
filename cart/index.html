@@ -55,7 +55,7 @@
                 <div>{{item.title}}</div>
                 <div>{{item.price}}</div>
             </div>
-            
+            <div>總金額:{{sum}}</div>
         </div>
     </div>
     <script>
@@ -95,6 +95,16 @@
             computed:{
                 cart(){
                     return this.cartItems.length;
+                },
+                priceArray(){
+                    if(this.cart === 0){
+                        return [0];
+                    }else{
+                        return this.cartItems.map(data => data.price);
+                    }
+                },
+                sum(){
+                    return this.priceArray.reduce((a,b)=>parseInt(a)+parseInt(b));
                 }
             }
         })
