@@ -46,8 +46,16 @@
             <div class="col-4 my-5" v-for="(product,idx) in products">
                 <h2>{{product.title}}</h2>
                 <p>$ {{product.price}}</p>
-                <button class="btn btn-primary">加入購物車</button>
+                <button class="btn btn-primary" @click="addToCart(idx)">加入購物車</button>
             </div>
+        </div>
+        <div class="carts">
+            <h1>購物車</h1>
+            <div v-for="item in cartItems" class="d-flex justify-content-between">
+                <div>{{item.title}}</div>
+                <div>{{item.price}}</div>
+            </div>
+            
         </div>
     </div>
     <script>
@@ -80,7 +88,9 @@
                 }
             },
             methods:{
-                
+                addToCart(idx){
+                    this.cartItems.push(this.products[idx]);
+                }
             },
             computed:{
                 cart(){
