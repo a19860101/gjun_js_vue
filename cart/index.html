@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .cart {
+            position: relative;
+            width: 100%;
+        }
+        .cart svg {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            transform: scale(2);
+        }
+        .cart_num {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #f00;
+            right: 10px;
+            top: 10px;
+            /* clip-path: circle(); */
+            border-radius: 50%;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="row">
+            <div class="cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                <span class="cart_num">{{cart}}</span>
+            </div>
+
+            <div class="col-4 my-5" v-for="(product,idx) in products">
+                <h2>{{product.title}}</h2>
+                <p>$ {{product.price}}</p>
+                <button class="btn btn-primary">加入購物車</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    products:[
+                        {
+                            id:1,
+                            title: 'iPhone 12',
+                            price: '28900',
+                        },
+                        {
+                            id:1,
+                            title: 'iPhone 12 Pro',
+                            price: '38900',
+                        },
+                        {
+                            id:1,
+                            title: 'iPhone 12 Mini',
+                            price: '18900',
+                        }
+                    ],
+                    cartItems:[]
+                }
+            },
+            methods:{
+                
+            },
+            computed:{
+                cart(){
+                    return this.cartItems.length;
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
