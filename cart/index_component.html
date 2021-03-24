@@ -37,8 +37,9 @@
     <div class="container" id="app">
         <div class="row">
             <app-cart></app-cart>
-            <app-product :products="products"></app-product>
+            <app-product :products="products" @add-to-cart="addToCart"></app-product>
         </div>
+        {{cartItems}}
         <app-carts></app-carts>
         
     </div>
@@ -139,7 +140,12 @@
         })
         app.component('app-product',{
             template:'#app-product',
-            props:['products']
+            props:['products'],
+            methods:{
+                addToCart(idx){
+                    this.$emit('add-to-cart',idx);
+                }
+            }
         })
         app.mount('#app');
     </script>
