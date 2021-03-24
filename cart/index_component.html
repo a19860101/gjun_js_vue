@@ -37,7 +37,7 @@
     <div class="container" id="app">
         <div class="row">
             <app-cart></app-cart>
-            <app-product></app-product>
+            <app-product :products="products"></app-product>
         </div>
         <app-carts></app-carts>
         
@@ -138,7 +138,8 @@
             template:'#app-carts'
         })
         app.component('app-product',{
-            template:'#app-product'
+            template:'#app-product',
+            props:['products']
         })
         app.mount('#app');
     </script>
