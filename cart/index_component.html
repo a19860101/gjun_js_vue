@@ -36,11 +36,10 @@
 <body>
     <div class="container" id="app">
         <div class="row">
-            <app-cart></app-cart>
+            <app-cart :cart="cart"></app-cart>
             <app-product :products="products" @add-to-cart="addToCart"></app-product>
         </div>
-        <app-carts :cart-items="cartItems" @clear-cart="clearCart"></app-carts>
-        
+        <app-carts :cart-items="cartItems" @clear-cart="clearCart" :sum="sum"></app-carts>
     </div>
 
     <template id="app-cart">
@@ -132,11 +131,12 @@
             }
         })
         app.component('app-cart',{
-            template:'#app-cart'
+            template:'#app-cart',
+            props:['cart']
         })
         app.component('app-carts',{
             template:'#app-carts',
-            props:['cart-items'],
+            props:['cart-items','sum'],
             methods:{
                 clearCart(){
                     this.$emit('clear-cart');
