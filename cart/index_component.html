@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .cart {
+            position: relative;
+            width: 100%;
+        }
+        .cart svg {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            transform: scale(2);
+        }
+        .cart_num {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #f00;
+            right: 10px;
+            top: 10px;
+            /* clip-path: circle(); */
+            border-radius: 50%;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="row">
+            <app-cart></app-cart>
+            <app-product></app-product>
+            <app-carts></app-carts>
+        </div>
+        
+    </div>
+
+    <template id="app-cart">
+        <div class="cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <span class="cart_num">{{cart}}</span>
+        </div>
+    </template>
+
+    <template id="app-product">
+        <div class="col-4 my-5" v-for="(product,idx) in products">
+            <h2>{{product.title}}</h2>
+            <p>$ {{product.price}}</p>
+            <button class="btn btn-primary" @click="addToCart(idx)">加入購物車</button>
+        </div>
+    </template>
+
+    <template id="app-carts">
+        <div class="carts">
+            <h1>購物車</h1>
+            <div v-for="(item,idx) in cartItems" class="d-flex justify-content-between my-2" >
+                <div>{{item.title}}</div>
+                <div>
+                    {{item.price}}
+
+                    <button @click="removeItem(idx)" class="btn btn-sm btn-danger">移除</button>
+                </div>
+            </div>
+            <div>總金額:{{sum}}</div>
+            <button @click="clearCart()" class="btn btn-warning">清空購物車</button>
+        </div>
+    </template>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    products:[
+                        {
+                            id:1,
+                            title: 'iPhone 12',
+                            price: '26900',
+                        },
+                        {
+                            id:2,
+                            title: 'iPhone 12 Mini',
+                            price: '23900',
+                        },
+                        {
+                            id:3,
+                            title: 'iPhone 12 Pro',
+                            price: '33900',
+                        },
+                        {
+                            id:4,
+                            title: 'iPhone 12 Pro Max',
+                            price: '37900',
+                        },
+                    ],
+                    cartItems:[]
+                }
+            },
+            methods:{
+                addToCart(idx){
+                    this.cartItems.push(this.products[idx]);
+                },
+                clearCart(){
+                    this.cartItems.length = 0;
+                },
+                removeItem(idx){
+                    this.cartItems.splice(idx,1);
+                }
+            },
+            computed:{
+                cart(){
+                    return this.cartItems.length;
+                },
+                priceArray(){
+                    if(this.cart === 0){
+                        return [0];
+                    }else{
+                        return this.cartItems.map(data => data.price);
+                    }
+                },
+                sum(){
+                    return this.priceArray.reduce((a,b)=>parseInt(a)+parseInt(b));
+                }
+            }
+        })
+        app.component('app-cart',{
+            template:'#app-cart'
+        })
+        app.component('app-carts',{
+            template:'#app-carts'
+        })
+        app.component('app-product',{
+            template:'#app-product'
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
