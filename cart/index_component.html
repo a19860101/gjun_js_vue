@@ -40,7 +40,7 @@
             <app-product :products="products" @add-to-cart="addToCart"></app-product>
         </div>
         {{cartItems}}
-        <app-carts></app-carts>
+        <app-carts :cart-items="cartItems"></app-carts>
         
     </div>
 
@@ -136,7 +136,8 @@
             template:'#app-cart'
         })
         app.component('app-carts',{
-            template:'#app-carts'
+            template:'#app-carts',
+            props:['cart-items']
         })
         app.component('app-product',{
             template:'#app-product',
